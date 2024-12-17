@@ -3,222 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer Zone</title>
+    <title>GamerZone</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #0a0a0a; color: #fff; font-size: 16px; }
+        header { background: linear-gradient(90deg, #1b1b1b, #292929); display: flex; justify-content: space-between; padding: 20px 5%; position: fixed; top: 0; width: 100%; z-index: 1000; }
+        .logo { font-size: 2rem; color: #ff5733; font-weight: bold; text-transform: uppercase; animation: glow 2s infinite alternate; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { text-decoration: none; color: #ff9f7f; font-weight: 500; transition: transform 0.3s ease; animation: slideIn 1.5s ease forwards; }
+        nav ul li a:hover { color: #ff5733; transform: scale(1.1); }
+        @keyframes glow { 0% { text-shadow: 0 0 5px #ff5733; } 100% { text-shadow: 0 0 20px #ff5733; } }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        body {
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-            font-size: 16px;
-        }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; position: relative; z-index: 1; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.8); z-index: -1; }
+        .hero h1 { font-size: 4rem; color: #ff5733; animation: pulseGlow 2s infinite alternate; }
+        .hero h2 { font-size: 2rem; margin: 10px 0; color: #ff9f7f; animation: fadeIn 3s ease-in-out; }
+        @keyframes pulseGlow { 0% { text-shadow: 0 0 5px #ff5733; } 100% { text-shadow: 0 0 10px #ff5733; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hero button { padding: 12px 25px; font-size: 1.2rem; color: #fff; background: #ff5733; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
+        .hero button:hover { transform: scale(1.1); background: #e6493e; }
 
-        /* Header */
-        header {
-            background: linear-gradient(90deg, #1b1b1b, #292929);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+        .auth-section { background: #1a1a1a; padding: 40px; text-align: center; margin-top: 100px; display: none; }
+        .auth-section input { margin: 15px; padding: 12px; width: 250px; border: 2px solid #ff5733; background: #1a1a1a; color: #fff; font-size: 1rem; border-radius: 8px; }
+        .auth-section button { padding: 12px 25px; font-size: 1.2rem; color: #fff; background: #ff5733; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #39ff14;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: glow 2s infinite alternate;
-        }
+        .comment-section { background: #1b1b1b; padding: 40px; text-align: center; display: none; }
+        .comment-section textarea { width: 80%; height: 150px; padding: 15px; background: #292929; color: #fff; border: 2px solid #ff5733; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; }
+        .comment-section button { padding: 12px 25px; font-size: 1.2rem; background: #ff5733; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #39ff14; }
-            100% { text-shadow: 0 0 20px #39ff14, 0 0 30px #39ff14; }
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #b8ffcb;
-            font-weight: 500;
-            transition: transform 0.3s ease, color 0.3s ease;
-            animation: slideIn 1.5s ease forwards;
-        }
-
-        nav ul li a:hover {
-            color: #39ff14;
-            transform: scale(1.1);
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 10, 0.8);
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #39ff14;
-            animation: pulseGlow 2s infinite alternate;
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin: 10px 0 30px;
-            color: #b8ffcb;
-            animation: fadeIn 3s ease-in-out;
-        }
-
-        @keyframes pulseGlow {
-            0% { text-shadow: 0 0 5px #39ff14; }
-            100% { text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Button Animation */
-        .hero button {
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: #39ff14;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .hero button:hover {
-            transform: scale(1.1);
-            background: #30e514;
-        }
-
-        /* Login & Sign-Up Section */
-        .auth-section {
-            background: #1a1a1a;
-            padding: 40px;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .auth-section input {
-            margin: 15px;
-            padding: 12px;
-            width: 250px;
-            border: 2px solid #39ff14;
-            background: #1a1a1a;
-            color: #fff;
-            font-size: 1rem;
-            border-radius: 8px;
-        }
-
-        .auth-section button {
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: #39ff14;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .auth-section button:hover {
-            background: #30e514;
-        }
-
-        /* Comment Section */
-        .comment-section {
-            background: #1b1b1b;
-            color: #fff;
-            padding: 40px;
-            text-align: center;
-            display: none; /* Hidden by default */
-        }
-
-        .comment-section textarea {
-            width: 80%;
-            height: 150px;
-            padding: 15px;
-            background: #292929;
-            color: #fff;
-            border: 2px solid #39ff14;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .comment-section button {
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            background: #39ff14;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .comment-section button:hover {
-            background: #30e514;
-        }
-
-        /* Footer */
-        footer {
-            background: #292929;
-            padding: 20px;
-            text-align: center;
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-
+        footer { background: #292929; padding: 20px; text-align: center; color: #bbb; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo">GamerZone</div>
         <nav>
@@ -232,20 +50,17 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to GamerZone</h1>
         <h2>Your ultimate gaming experience</h2>
         <button onclick="window.location.href='#about'">Get Started</button>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
         <p>GamerZone is the place where gaming enthusiasts gather, explore, and enjoy everything gaming. Join us for exciting content and challenges.</p>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>If you have any questions or just want to chat, feel free to reach out to us!</p>
@@ -255,7 +70,6 @@
         <p>Instagram: @ee.dax11</p>
     </section>
 
-    <!-- Login & Sign-Up Section -->
     <section class="auth-section" id="auth-section">
         <h2 id="auth-title">Login</h2>
         <input type="text" id="username" placeholder="Username">
@@ -264,47 +78,38 @@
         <button onclick="signUp()">Sign Up</button>
     </section>
 
-    <!-- Comment Section -->
     <section class="comment-section" id="comment-section">
         <h2>Leave a Comment</h2>
         <textarea placeholder="Write your comment here..."></textarea>
         <button>Submit Comment</button>
     </section>
 
-    <!-- Footer -->
     <footer>
         &copy; 2024 GamerZone | Powered by Passion
     </footer>
 
     <script>
-        // Show login or sign up form
         function showAuth(type) {
             const authSection = document.getElementById('auth-section');
             const title = document.getElementById('auth-title');
-            if (type === 'login') {
-                title.textContent = 'Login';
-            } else if (type === 'signup') {
-                title.textContent = 'Sign Up';
-            }
+            title.textContent = type === 'login' ? 'Login' : 'Sign Up';
             authSection.style.display = 'block';
         }
 
-        // Simulate login (for demo purposes)
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             if (username && password) {
-                alert('Logged in successfully!');
-                document.getElementById('comment-section').style.display = 'block'; // Show comment section
-                document.getElementById('auth-section').style.display = 'none'; // Hide auth section
+                alert('Logged in!');
+                document.getElementById('comment-section').style.display = 'block';
+                document.getElementById('auth-section').style.display = 'none';
             } else {
-                alert('Please enter both username and password!');
+                alert('Please fill in both fields!');
             }
         }
 
-        // Simulate sign-up
         function signUp() {
-            alert('Sign-up functionality will be added soon!');
+            alert('Sign-up functionality coming soon!');
         }
     </script>
 
