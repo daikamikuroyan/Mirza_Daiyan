@@ -66,19 +66,19 @@
             gap: 15px;
         }
 
-        .auth a {
-            text-decoration: none;
-            color: #f02d3a;
-            font-weight: bold;
+        .auth button {
+            background-color: #f02d3a;
+            border: none;
+            color: white;
             padding: 8px 15px;
-            border: 2px solid #f02d3a;
-            border-radius: 8px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .auth a:hover {
-            background-color: #f02d3a;
-            color: #fff;
+        .auth button:hover {
+            background-color: #e62130;
         }
 
         /* Hero Section */
@@ -169,6 +169,61 @@
             color: #ccc;
             font-size: 0.9rem;
         }
+
+        /* Popup Form */
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e2e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-form h2 {
+            color: #ff3f34;
+            margin-bottom: 20px;
+        }
+
+        .popup-form input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2a2a40;
+            color: #eaeaea;
+        }
+
+        .popup-form button {
+            width: 100%;
+            background-color: #ff3f34;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-form button:hover {
+            background-color: #e62130;
+        }
+
+        .popup-form .close-btn {
+            background: none;
+            color: white;
+            font-size: 1rem;
+            text-align: right;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -184,8 +239,8 @@
             </ul>
         </nav>
         <div class="auth">
-            <a href="#" onclick="login()">Login</a>
-            <a href="#" onclick="signup()">Signup</a>
+            <button onclick="showForm('login')">Login</button>
+            <button onclick="showForm('signup')">Sign Up</button>
         </div>
     </header>
 
@@ -206,7 +261,56 @@
         &copy; 2024 Daiyan Zone | Designed with Passion
     </footer>
 
+    <!-- Login/Signup Form -->
+    <div class="popup-form" id="popup-form">
+        <button class="close-btn" onclick="closeForm()">X Close</button>
+        <h2 id="form-title">Login</h2>
+        <form id="auth-form" onsubmit="saveUserData(event)">
+            <input type="text" id="username" placeholder="Enter your name" required />
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
     <script>
+        // Show form dynamically for Login or Signup
+        function showForm(action) {
+            document.getElementById('popup-form').style.display = 'block';
+            document.getElementById('form-title').textContent = action === 'login' ? 'Login' : 'Sign Up';
+        }
+
+        // Close the form
+        function closeForm() {
+            document.getElementById('popup-form').style.display = 'none';
+        }
+
+        // Save user data in localStorage
+        function saveUserData(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+
+            alert(`Welcome, ${username}!`);
+            closeForm();
+            checkUserLogin();
+        }
+
+        // Check if user is already logged in
+        function checkUserLogin() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.querySelector('.hero h1').textContent = `Welcome Back, ${username}!`;
+                document.querySelector('.auth').innerHTML = `<span style="color:#f02d3a; font-weight:bold;">Logged in as ${username}</span>`;
+            }
+        }
+
+        // On page load, check for logged-in user
+        window.onload = checkUserLogin;
+
         function showSecondSection() {
             const secondSection = document.getElementById('second-section');
             secondSection.classList.add('show');
@@ -215,91 +319,6 @@
                 behavior: 'smooth'
             });
         }
-
-        // Mock functions for Login and Signup
-        function login() {
-            const username = prompt("Enter your username:");
-            if (username) {
-                localStorage.setItem('user', username);
-                alert(Welcome back, ${username}!);
-                updateAuthState();
-            }
-        }
-
-        function signup() {
-            const username = prompt("Enter a username for Signup:");
-            if (username) {
-                localStorage.setItem('user', username);
-                alert(Signup successful! Welcome, ${username}.);
-                updateAuthState();
-            }
-        }
-
-        function updateAuthState() {
-            const user = localStorage.getItem('user');
-            if (user) {
-                document.querySelector('.auth').innerHTML = <span style="color:#f02d3a; font-weight:bold;">Hello, ${user}!</span>;
-            }
-        }
-
-        // Auto-login on page load
-        document.addEventListener('DOMContentLoaded', updateAuthState);
     </script>
 </body>
-</html>  
-<script>
-    function login() {
-        const username = prompt("Enter your username:");
-        const storedCode = localStorage.getItem(`${username}_code`);
-        
-        if (username) {
-            const userCode = prompt("Enter the verification code sent to your email:");
-            
-            if (userCode === storedCode) {
-                localStorage.setItem('user', username);
-                alert(`Welcome back, ${username}!`);
-                updateAuthState();
-            } else {
-                alert('Invalid verification code. Please try again.');
-            }
-        }
-    }
-
-    function signup() {
-        const username = prompt("Enter a username for Signup:");
-        if (username) {
-            const verificationCode = generateVerificationCode();
-            
-            // Simulate sending an email with the code
-            alert(`A verification code has been sent to your email: ${verificationCode}`);
-            
-            // Store the username and verification code in localStorage
-            localStorage.setItem(`${username}_code`, verificationCode);
-            
-            // Prompt for the verification code
-            const userCode = prompt("Enter the verification code you received:");
-            if (userCode === verificationCode) {
-                localStorage.setItem('user', username);
-                alert(`Signup successful! Welcome, ${username}.`);
-                updateAuthState();
-            } else {
-                alert('Invalid verification code. Please try again.');
-            }
-        }
-    }
-
-    // Helper function to generate a random 6-digit verification code
-    function generateVerificationCode() {
-        return Math.floor(100000 + Math.random() * 900000); // 6-digit code
-    }
-
-    function updateAuthState() {
-        const user = localStorage.getItem('user');
-        if (user) {
-            document.querySelector('.auth').innerHTML = `<span style="color:#f02d3a; font-weight:bold;">Hello, ${user}!</span>`;
-        }
-    }
-
-    // Auto-login on page load
-    document.addEventListener('DOMContentLoaded', updateAuthState);
-</script>
+</html>
