@@ -5,120 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Information</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #121212;
             font-family: 'Arial', sans-serif;
             color: white;
+            line-height: 1.6;
         }
-
         header {
             background-color: #000000;
             padding: 30px;
             text-align: center;
         }
-
         header h1 {
             color: #ff3f34;
             font-size: 3rem;
             font-weight: bold;
+            letter-spacing: 2px;
         }
-
         .container {
             padding: 50px 20px;
             text-align: center;
         }
-
         h2 {
             color: #ff3f34;
             font-size: 2.5rem;
+            margin-bottom: 20px;
         }
-
         p {
             color: #ccc;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
-
         .contact-info {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
+            flex-wrap: wrap;
         }
-
         .contact-item {
             background: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 12px;
+            width: 220px;
             text-align: center;
-            transition: transform 0.3s ease;
-            width: 100%;
-            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .contact-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
         }
-
         .contact-item img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
-
+        .contact-item img:hover {
+            transform: rotate(360deg);
+        }
         .contact-item p {
             color: #ff9f7f;
+            font-size: 1.2rem;
         }
-
         footer {
             background-color: #000000;
-            padding: 10px;
-            text-align: center;
             color: #ccc;
+            text-align: center;
+            padding: 15px;
+            font-size: 1rem;
         }
-
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
         /* Responsive Styles */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 10px;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .contact-item img {
-                width: 40px;
-                height: 40px;
+            .contact-item {
+                width: 90%;
+                margin: 10px 0;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Contact Information</h1>
     </header>
+
     <div class="container">
         <h2>Get in Touch</h2>
         <p>Want to connect? You can reach out through any of the following platforms:</p>
+
         <div class="contact-info">
+            <!-- WhatsApp -->
             <a href="tel:+8801869004946" class="contact-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Logo">
+                <p>+8801869004946</p>
                 <p>WhatsApp</p>
             </a>
-            <a href="https://www.facebook.com/" target="_blank" class="contact-item">
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/people/Mirza-Daiyan/pfbid0YGUYpNE8zYPWtPGJ5c12LcY32BfAcs94peti4N3mzfx1pKorxyWQmnMzuo1U5w21l/" target="_blank" class="contact-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+                <p>Mirza Daiyan</p>
                 <p>Facebook</p>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/ee.dax11/" target="_blank" class="contact-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+                <p>@ee.dax11</p>
+                <p>Instagram</p>
+            </a>
+
+            <!-- Phone -->
+            <a href="tel:+8801869004946" class="contact-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Phone_icon.svg" alt="Phone Logo">
+                <p>+8801869004946</p>
+                <p>Phone</p>
             </a>
         </div>
     </div>
+
     <footer>
         &copy; 2024 Mirza Daiyan | All Rights Reserved
     </footer>
+
 </body>
 </html>
