@@ -24,14 +24,6 @@
         .hero button { padding: 12px 25px; font-size: 1.2rem; color: #fff; background: #ff5733; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
         .hero button:hover { transform: scale(1.1); background: #e6493e; }
 
-        .auth-section { background: #1a1a1a; padding: 40px; text-align: center; margin-top: 100px; display: none; }
-        .auth-section input { margin: 15px; padding: 12px; width: 250px; border: 2px solid #ff5733; background: #1a1a1a; color: #fff; font-size: 1rem; border-radius: 8px; }
-        .auth-section button { padding: 12px 25px; font-size: 1.2rem; color: #fff; background: #ff5733; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; }
-
-        .comment-section { background: #1b1b1b; padding: 40px; text-align: center; display: none; }
-        .comment-section textarea { width: 80%; height: 150px; padding: 15px; background: #292929; color: #fff; border: 2px solid #ff5733; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; }
-        .comment-section button { padding: 12px 25px; font-size: 1.2rem; background: #ff5733; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
-
         footer { background: #292929; padding: 20px; text-align: center; color: #bbb; font-size: 0.9rem; }
     </style>
 </head>
@@ -42,10 +34,6 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#login" onclick="showAuth('login')">Login</a></li>
-                <li><a href="#signup" onclick="showAuth('signup')">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -53,65 +41,11 @@
     <section class="hero">
         <h1>Welcome to GamerZone</h1>
         <h2>Your ultimate gaming experience</h2>
-        <button onclick="window.location.href='#about'">Get Started</button>
-    </section>
-
-    <section id="about">
-        <h2>About Us</h2>
-        <p>GamerZone is the place where gaming enthusiasts gather, explore, and enjoy everything gaming. Join us for exciting content and challenges.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or just want to chat, feel free to reach out to us!</p>
-        <p>Number: +8801869004946</p>
-        <p>WhatsApp: +8801869004946</p>
-        <p>Facebook: Mirza Daiyan</p>
-        <p>Instagram: @ee.dax11</p>
-    </section>
-
-    <section class="auth-section" id="auth-section">
-        <h2 id="auth-title">Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <button onclick="signUp()">Sign Up</button>
-    </section>
-
-    <section class="comment-section" id="comment-section">
-        <h2>Leave a Comment</h2>
-        <textarea placeholder="Write your comment here..."></textarea>
-        <button>Submit Comment</button>
     </section>
 
     <footer>
         &copy; 2024 GamerZone | Powered by Passion
     </footer>
-
-    <script>
-        function showAuth(type) {
-            const authSection = document.getElementById('auth-section');
-            const title = document.getElementById('auth-title');
-            title.textContent = type === 'login' ? 'Login' : 'Sign Up';
-            authSection.style.display = 'block';
-        }
-
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username && password) {
-                alert('Logged in!');
-                document.getElementById('comment-section').style.display = 'block';
-                document.getElementById('auth-section').style.display = 'none';
-            } else {
-                alert('Please fill in both fields!');
-            }
-        }
-
-        function signUp() {
-            alert('Sign-up functionality coming soon!');
-        }
-    </script>
 
 </body>
 </html>
