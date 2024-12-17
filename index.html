@@ -1,240 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Landing Page</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist Landing Page</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        body {
-            background: linear-gradient(135deg, #e0f2ff, #ffffff);
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-            animation: backgroundAnimation 10s infinite alternate;
-        }
+    body {
+      background: linear-gradient(135deg, #e0f2ff, #ffffff); /* Subtle background gradient */
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        @keyframes backgroundAnimation {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
-        }
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin: 0 15px;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
+    nav a:hover {
+      color: #007aff;
+    }
 
-        nav a:hover {
-            color: #007aff;
-        }
+    /* Landing Page Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
 
-        /* Landing Page Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background-color: transparent;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #000;
+    }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #000;
-        }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
+    .hero button {
+      padding: 10px 30px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #007aff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
 
-        .hero button {
-            padding: 10px 30px;
-            font-size: 1rem;
-            color: #fff;
-            background-color: #007aff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
+    .hero button:hover {
+      background-color: #005bb5;
+      transform: translateY(-3px);
+      box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+    }
 
-        .hero button:hover {
-            background-color: #005bb5;
-            transform: translateY(-3px);
-            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-        }
+    /* Learn More Section */
+    .learn-more {
+      display: none;
+      background: linear-gradient(135deg, #d0e9ff, #ffffff);
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
 
-        /* Learn More Section */
-        .learn-more {
-            display: none;
-            background: linear-gradient(135deg, #d0e9ff, #ffffff);
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-            animation: backgroundAnimation 10s infinite alternate;
-        }
+    h1 { /* Applies to all h1 elements */
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+    .profile-upload {
+      text-align: center;
+      margin-top: 30px;
+    }
 
-        .profile-upload {
-            text-align: center;
-            margin-top: 30px;
-        }
+    .profile-upload input {
+      display: none;
+    }
 
-        .profile-upload input {
-            display: none;
-        }
+    .profile-upload label {
+      background-color: #007aff;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-        .profile-upload label {
-            background-color: #007aff;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .profile-upload label:hover {
-            background-color: #005bb5;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 20px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #007aff;
-        }
-
-        .btn {
-            background-color: #007aff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #005bb5;
-        }
-
-        .btn:focus {
-            outline: none;
-        }
-
-        /* Button Focus Styling */
-        .hero button:focus, .btn:focus {
-            outline: 3px solid #005bb5;
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="logo">MyLogo</div>
-        <nav>
-            <a href="javascript:void(0);" onclick="showLandingPage()">Home</a>
-            <a href="javascript:void(0);" onclick="showLearnMorePage()">Learn More</a>
-        </nav>
-    </header>
-
-    <!-- Landing Page Section -->
-    <section class="hero" id="landingPage">
-        <h1>Welcome to My Landing Page</h1>
-        <p>This is a clean and minimalistic introduction page. You can customize this content to suit your needs.</p>
-        <!-- Learn More button -->
-        <button onclick="showLearnMorePage()">Learn More</button>
-    </section>
-
-    <!-- Learn More Section -->
-    <section class="learn-more" id="learnMorePage">
-        <h1>Is Daikami and Daiyan are same?</h1>
-
-        <!-- Image Upload Section -->
-        <div class="profile-upload">
-            <img src="default-pic.jpg" alt="Profile Picture" id="profilePic" class="profile-pic">
-            <input type="file" id="fileInput" accept="image/*" onchange="previewImage()">
-            <label for="fileInput">Upload Picture</label>
-        </div>
-
-        <button class="btn" onclick="alert('Picture uploaded successfully!')">Save Picture</button>
-    </section>
-
-    <script>
-        // Function to toggle between pages
-        function showLearnMorePage() {
-            document.getElementById("landingPage").style.display = "none";
-            document.getElementById("learnMorePage").style.display = "flex";
-        }
-
-        function showLandingPage() {
-            document.getElementById("landingPage").style.display = "flex";
-            document.getElementById("learnMorePage").style.display = "none";
-        }
-
-        // Function to preview the uploaded image
-        function previewImage() {
-            const fileInput = document.getElementById('fileInput');
-            const profilePic = document.getElementById('profilePic');
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profilePic.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                profilePic.src = 'default-pic.jpg'; // Default fallback image
-            }
-        }
-    </script>
-</body>
-</html>
+    .profile-upload label:hover {
