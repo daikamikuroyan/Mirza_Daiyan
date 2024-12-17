@@ -10,76 +10,98 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
         }
 
-        /* Main Page Styling */
+        /* Body Styling */
         body {
-            background: linear-gradient(135deg, #FFDD57, #F9C74F);
+            background: #121212; /* Dark Background */
+            color: #fff;
             height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: #333;
+            align-items: center;
             text-align: center;
+            overflow: hidden;
             transition: background 1s ease-in-out;
         }
 
+        /* Container Styling */
         .container {
             animation: fadeIn 2s ease-in-out;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1); /* Frosted Glass Effect */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
         }
 
+        /* Titles */
         .main-title {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #000;
+            color: #f1c40f;
+            text-shadow: 0 2px 8px rgba(255, 255, 0, 0.8);
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            color: #444;
+            color: #ddd;
+            letter-spacing: 1px;
         }
 
+        /* Creative Button */
         .creative-button {
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: #333;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #121212;
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
         }
 
         .creative-button:hover {
-            background: #000;
             transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6);
         }
 
-        /* Second Section Styling */
+        /* Second Section */
         .second-section {
-            background-color: #000;
-            color: #fff;
-            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #000, #1c1c1c);
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transform: translateY(100%);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         }
 
         .second-section.show {
             opacity: 1;
+            transform: translateY(0);
         }
 
         .big-text {
-            font-size: 4rem;
-            animation: bounce 2s infinite;
-            text-transform: uppercase;
+            font-size: 3rem;
+            color: #f1c40f;
+            text-shadow: 0 2px 15px rgba(241, 196, 15, 0.8);
+            animation: pulse 2s infinite;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* Animations */
@@ -94,12 +116,68 @@
             }
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
             50% {
-                transform: translateY(-20px);
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .creative-button {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+
+            .big-text {
+                font-size: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .creative-button {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .big-text {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -119,10 +197,10 @@
 
     <script>
         function showSecondSection() {
-            // Hide the main page
+            // Hide the main page smoothly
             document.getElementById('main-page').style.display = 'none';
-            
-            // Show the second section with smooth transition
+
+            // Show the second section
             const secondSection = document.getElementById('second-section');
             secondSection.classList.add('show');
         }
