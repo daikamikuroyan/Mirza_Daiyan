@@ -10,83 +10,129 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Body Styling */
         body {
-            background: #121212; /* Dark Gaming-Like Background */
+            background: #1e1e2e; /* Riot-style dark background */
             color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(90deg, #2a2a40, #3b3b58);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f02d3a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #eaeaea;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f02d3a;
+        }
+
+        /* Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
-            transition: background 1s ease-in-out;
-        }
-
-        /* Container Styling */
-        .container {
-            animation: fadeIn 2s ease-in-out;
-            max-width: 800px;
             padding: 20px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1); /* Frosted Glass Effect */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; 
+            position: relative;
+            z-index: 1;
         }
 
-        /* Titles */
-        .main-title {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #f1c40f; /* Yellow Accent */
-            text-shadow: 0 2px 8px rgba(255, 255, 0, 0.8);
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #ddd;
-            letter-spacing: 1px;
-        }
-
-        /* Creative Button */
-        .creative-button {
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #121212;
-            background: linear-gradient(135deg, #f1c40f, #f39c12);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
-        }
-
-        .creative-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6);
-        }
-
-        /* Second Section */
-        .second-section {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #000, #1c1c1c);
+            background: rgba(30, 30, 46, 0.7);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin: 10px 0 30px;
+            color: #f02d3a;
+            text-transform: uppercase;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background: #f02d3a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(240, 45, 58, 0.5);
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            background: #e62130;
+            box-shadow: 0 6px 15px rgba(240, 45, 58, 0.7);
+        }
+
+        /* Second Section */
+        .second-section {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #12121b;
+            color: #f02d3a;
+            text-transform: uppercase;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 4px 10px rgba(240, 45, 58, 0.7);
             opacity: 0;
-            transform: translateY(100%);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .second-section.show {
@@ -94,75 +140,85 @@
             transform: translateY(0);
         }
 
-        .big-text {
-            font-size: 4rem;
-            color: #f1c40f;
-            text-shadow: 0 2px 15px rgba(241, 196, 15, 0.8);
-            animation: pulse 2s infinite;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        /* Footer */
+        footer {
+            background: #2a2a40;
+            padding: 20px;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            50% {
-                transform: scale(1.05);
+
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            100% {
-                transform: scale(1);
+
+            .hero h2 {
+                font-size: 1.2rem;
             }
-        }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+            .hero button {
+                font-size: 1rem;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #f1c40f, #f39c12);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #121212;
+            .second-section {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Main Page -->
-    <div class="container" id="main-page">
-        <h1 class="main-title">Welcome to My Zone</h1>
-        <h2 class="subtitle">Here Me, Daiyan</h2>
-        <button class="creative-button" onclick="showSecondSection()">Explore More</button>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="logo">Daiyan Zone</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to My Zone</h1>
+        <h2>Here Me, Daiyan</h2>
+        <button onclick="showSecondSection()">Explore More</button>
+    </section>
 
     <!-- Second Section -->
-    <div class="second-section" id="second-section">
-        <h1 class="big-text">I'm Still Learning</h1>
-    </div>
+    <section class="second-section" id="second-section">
+        I'm Still Learning
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Daiyan Zone | Designed with Passion
+    </footer>
 
     <script>
         function showSecondSection() {
-            // Hide the main page smoothly
-            document.getElementById('main-page').style.display = 'none';
-
-            // Show the second section
+            // Scroll to the second section smoothly
             const secondSection = document.getElementById('second-section');
             secondSection.classList.add('show');
+            window.scrollTo({
+                top: secondSection.offsetTop,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
