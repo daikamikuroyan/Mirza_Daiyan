@@ -15,7 +15,7 @@
 
         /* Body Styling */
         body {
-            background: #1e1e2e;
+            background: #1e1e2e; /* Riot-style dark background */
             color: #fff;
             overflow-x: hidden;
         }
@@ -40,6 +40,7 @@
             color: #f02d3a;
             text-transform: uppercase;
             letter-spacing: 2px;
+            cursor: pointer;
         }
 
         nav ul {
@@ -59,7 +60,7 @@
             color: #f02d3a;
         }
 
-        /* Auth Buttons */
+        /* Login & Signup */
         .auth {
             display: flex;
             gap: 15px;
@@ -223,62 +224,6 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero h2 {
-                font-size: 1.2rem;
-            }
-
-            .hero button {
-                font-size: 0.9rem;
-                padding: 10px 20px;
-            }
-
-            .second-section {
-                font-size: 2rem;
-                padding: 20px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 1rem;
-            }
-
-            .hero button {
-                font-size: 0.8rem;
-                padding: 8px 15px;
-            }
-
-            .second-section {
-                font-size: 1.5rem;
-                padding: 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -290,7 +235,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li> <!-- Link to Contact Page -->
             </ul>
         </nav>
         <div class="auth">
@@ -329,25 +274,51 @@
 
     <!-- JavaScript -->
     <script>
+        // Show form dynamically for Login or Signup
         function showForm(action) {
             document.getElementById('popup-form').style.display = 'block';
             document.getElementById('form-title').textContent = action === 'login' ? 'Login' : 'Sign Up';
         }
 
+        // Close the form
         function closeForm() {
             document.getElementById('popup-form').style.display = 'none';
         }
 
+        // Save user data in localStorage
         function saveUserData(event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
-            const email
-        = document.getElementById('email').value;
-        alert(`Thank you, ${username}. Your email ${email} has been saved!`);
-        closeForm();
-    }
+            const email = document.getElementById('email').value;
 
-    function showSecondSection() {
-        document.getElementById('second-section').classList.add('show');
-    }
-</script>
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+
+            alert(`Welcome, ${username}!`);
+            closeForm();
+            checkUserLogin();
+        }
+
+        // Check if user is already logged in
+        function checkUserLogin() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.querySelector('.hero h1').textContent = `Welcome Back, ${username}!`;
+                document.querySelector('.auth').innerHTML = `<span style="color:#f02d3a; font-weight:bold;">Logged in as ${username}</span>`;
+            }
+        }
+
+        // On page load, check for logged-in user
+        window.onload = checkUserLogin;
+
+        function showSecondSection() {
+            const secondSection = document.getElementById('second-section');
+            secondSection.classList.add('show');
+            window.scrollTo({
+                top: secondSection.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
