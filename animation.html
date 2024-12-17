@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code & Beyond - Gaming Vibe</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1a1a1a, #292929);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #39ff14;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #39ff14; }
+            100% { text-shadow: 0 0 20px #39ff14, 0 0 30px #39ff14; }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #b8ffcb;
+            font-weight: 500;
+            transition: transform 0.3s ease, color 0.3s ease;
+            animation: slideIn 1.5s ease forwards;
+        }
+
+        nav ul li a:hover {
+            color: #39ff14;
+            transform: scale(1.1);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #39ff14;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin: 10px 0 30px;
+            color: #b8ffcb;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 5px #39ff14; }
+            100% { text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Button Animation */
+        .hero button
