@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Zone</title>
+    <title>Code & Beyond</title>
     <style>
         /* General Reset */
         * {
@@ -13,14 +13,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Body Styling */
         body {
-            background: #1e1e2e; /* Riot-style dark background */
+            background: #1e1e2e;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* Header Section */
+        /* Header */
         header {
             background: linear-gradient(90deg, #2a2a40, #3b3b58);
             display: flex;
@@ -31,16 +30,14 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        header .logo {
+        .logo {
             font-size: 1.8rem;
             font-weight: bold;
             color: #f02d3a;
             text-transform: uppercase;
             letter-spacing: 2px;
-            cursor: pointer;
         }
 
         nav ul {
@@ -53,11 +50,12 @@
             text-decoration: none;
             color: #eaeaea;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         nav ul li a:hover {
             color: #f02d3a;
+            transform: scale(1.1);
         }
 
         /* Hero Section */
@@ -89,106 +87,108 @@
             font-size: 3.5rem;
             font-weight: bold;
             color: #fff;
-            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
         }
 
         .hero h2 {
             font-size: 1.8rem;
             margin: 10px 0 30px;
             color: #f02d3a;
-            text-transform: uppercase;
         }
 
         .hero button {
             padding: 12px 25px;
             font-size: 1.1rem;
-            font-weight: bold;
             color: #fff;
             background: #f02d3a;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(240, 45, 58, 0.5);
+            transition: all 0.3s ease;
         }
 
         .hero button:hover {
             transform: scale(1.05);
             background: #e62130;
-            box-shadow: 0 6px 15px rgba(240, 45, 58, 0.7);
         }
 
-        /* Second Section */
-        .second-section {
+        /* About Section */
+        .about {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             background: #12121b;
-            color: #f02d3a;
-            text-transform: uppercase;
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 0 4px 10px rgba(240, 45, 58, 0.7);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
+            text-align: center;
+            color: #fff;
         }
 
-        .second-section.show {
-            opacity: 1;
-            transform: translateY(0);
+        .about img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #f02d3a;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            width: 80%;
+            max-width: 600px;
+            margin: 10px auto;
         }
 
         /* Footer */
         footer {
             background: #2a2a40;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            color: #ccc;
+            color: #f02d3a;
             font-size: 0.9rem;
         }
 
-        /* Media Queries */
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
+        /* Contact Page */
+        .contact-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background: #1e1e2e;
+        }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        .contact-page h2 {
+            color: #f02d3a;
+            margin-bottom: 20px;
+        }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        .contact-info {
+            font-size: 1.1rem;
+        }
 
-            .hero h2 {
-                font-size: 1.2rem;
-            }
+        .contact-info img {
+            width: 30px;
+            margin-right: 10px;
+        }
 
-            .hero button {
-                font-size: 1rem;
-            }
-
-            .second-section {
-                font-size: 2rem;
-            }
+        .contact-info div {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Daiyan Zone</div>
+        <div class="logo">Code & Beyond</div>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -197,29 +197,20 @@
     <section class="hero">
         <h1>Welcome to My Zone</h1>
         <h2>Here Me, Daiyan</h2>
-        <button onclick="showSecondSection()">Explore More</button>
+        <button onclick="alert('Let\'s Explore More!')">Explore More</button>
     </section>
 
-    <!-- Second Section -->
-    <section class="second-section" id="second-section">
-        I'm Still Learning
+    <!-- About Section -->
+    <section id="about" class="about">
+        <img src="your-image-path.jpg" alt="Daiyan">
+        <p>
+            Daiyan here, I just created this landing page or whatever. Kinda hard! Took me 1 week of research and 1 month to learn some hacks and tricks. Thnx to YouTube!! Whatever, how was it? Feel free to drop a comment and let me know what I should add more.
+        </p>
     </section>
 
     <!-- Footer -->
     <footer>
-        &copy; 2024 Daiyan Zone | Designed with Passion
+        Ami bhai coding pare nh!
     </footer>
-
-    <script>
-        function showSecondSection() {
-            // Scroll to the second section smoothly
-            const secondSection = document.getElementById('second-section');
-            secondSection.classList.add('show');
-            window.scrollTo({
-                top: secondSection.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    </script>
 </body>
 </html>
