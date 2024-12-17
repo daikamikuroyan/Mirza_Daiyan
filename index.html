@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Zone</title>
+    <title>Discover Your Space</title>
     <style>
         /* General Reset */
         * {
@@ -15,281 +15,225 @@
 
         /* Body Styling */
         body {
-            background: #1e1e2e; /* Riot-style dark background */
-            color: #fff;
-            overflow-x: hidden;
+            background-color: #121212;
+            color: white;
         }
 
-        /* Header Section */
+        /* Header Styling */
         header {
-            background: linear-gradient(90deg, #2a2a40, #3b3b58);
+            background-color: #000;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        header .logo {
-            font-size: 1.8rem;
+        /* Logo and Navigation */
+        .logo {
+            font-size: 2rem;
+            color: #ff3f34;
             font-weight: bold;
-            color: #f02d3a;
             text-transform: uppercase;
-            letter-spacing: 2px;
             cursor: pointer;
         }
 
-        nav ul {
-            list-style: none;
+        .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
 
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
             color: #eaeaea;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: #f02d3a;
+        .nav-links a:hover {
+            color: #ff3f34;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
+        /* Login and Signup Buttons */
+        .auth-buttons {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; 
-            position: relative;
-            z-index: 1;
+            gap: 15px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(30, 30, 46, 0.7);
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero h2 {
-            font-size: 1.8rem;
-            margin: 10px 0 30px;
-            color: #f02d3a;
-            text-transform: uppercase;
-        }
-
-        .hero button {
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-            background: #f02d3a;
+        .auth-buttons button {
+            background-color: #ff3f34;
             border: none;
-            border-radius: 8px;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(240, 45, 58, 0.5);
+            transition: all 0.3s ease;
         }
 
-        .hero button:hover {
-            transform: scale(1.05);
-            background: #e62130;
-            box-shadow: 0 6px 15px rgba(240, 45, 58, 0.7);
+        .auth-buttons button:hover {
+            background-color: #e62130;
         }
 
-        /* Second Section */
-        .second-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #12121b;
-            color: #f02d3a;
-            text-transform: uppercase;
+        /* Main Section */
+        main {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        main h1 {
             font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 0 4px 10px rgba(240, 45, 58, 0.7);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
+            margin-bottom: 20px;
+            color: #ff3f34;
         }
 
-        .second-section.show {
-            opacity: 1;
-            transform: translateY(0);
+        main p {
+            font-size: 1.2rem;
+            color: #ccc;
         }
 
         /* Footer */
         footer {
-            background: #2a2a40;
-            padding: 20px;
+            background-color: #000;
             text-align: center;
+            padding: 15px;
             color: #ccc;
-            font-size: 0.9rem;
         }
 
-        /* Media Queries */
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
+        /* Popup Form */
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e2e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        .popup-form h2 {
+            color: #ff3f34;
+            margin-bottom: 20px;
+        }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        .popup-form input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2a2a40;
+            color: #eaeaea;
+        }
 
-            .hero h2 {
-                font-size: 1.2rem;
-            }
+        .popup-form button {
+            width: 100%;
+            background-color: #ff3f34;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-            .hero button {
-                font-size: 1rem;
-            }
+        .popup-form button:hover {
+            background-color: #e62130;
+        }
 
-            .second-section {
-                font-size: 2rem;
-            }
+        .popup-form .close-btn {
+            background: none;
+            color: white;
+            font-size: 1rem;
+            text-align: right;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Daiyan Zone</div>
+        <div class="logo">Discover Your Space</div>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Portfolio</a>
+                <a href="#">Contact</a>
+            </div>
         </nav>
+        <div class="auth-buttons">
+            <button onclick="showForm('login')">Login</button>
+            <button onclick="showForm('signup')">Sign Up</button>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to My Zone</h1>
-        <h2>Here Me, Daiyan</h2>
-        <button onclick="showSecondSection()">Explore More</button>
-    </section>
-
-    <!-- Second Section -->
-    <section class="second-section" id="second-section">
-        I'm Still Learning
-    </section>
+    <!-- Main Section -->
+    <main>
+        <h1>Welcome Back!</h1>
+        <p>Explore and Discover More About Your World.</p>
+    </main>
 
     <!-- Footer -->
     <footer>
-        &copy; 2024 Daiyan Zone | Designed with Passion
+        &copy; 2024 Mirza Daiyan | All Rights Reserved
     </footer>
 
+    <!-- Login/Signup Form -->
+    <div class="popup-form" id="popup-form">
+        <button class="close-btn" onclick="closeForm()">X Close</button>
+        <h2 id="form-title">Login</h2>
+        <form id="auth-form" onsubmit="saveUserData(event)">
+            <input type="text" id="username" placeholder="Enter your name" required />
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
     <script>
-        function showSecondSection() {
-            // Scroll to the second section smoothly
-            const secondSection = document.getElementById('second-section');
-            secondSection.classList.add('show');
-            window.scrollTo({
-                top: secondSection.offsetTop,
-                behavior: 'smooth'
-            });
+        // Show form dynamically for Login or Signup
+        function showForm(action) {
+            document.getElementById('popup-form').style.display = 'block';
+            document.getElementById('form-title').textContent = action === 'login' ? 'Login' : 'Sign Up';
         }
+
+        // Close the form
+        function closeForm() {
+            document.getElementById('popup-form').style.display = 'none';
+        }
+
+        // Save user data in localStorage
+        function saveUserData(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+
+            alert(`Welcome, ${username}!`);
+            closeForm();
+            checkUserLogin();
+        }
+
+        // Check if user is already logged in
+        function checkUserLogin() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.querySelector('main h1').textContent = `Welcome Back, ${username}!`;
+                document.querySelector('.auth-buttons').innerHTML = `<span style="color:#ff3f34;">Logged in as ${username}</span>`;
+            }
+        }
+
+        // On page load, check for logged-in user
+        window.onload = checkUserLogin;
     </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Zone</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #000;
-            padding: 30px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 3rem;
-            color: #ff3f34;
-        }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav a {
-            color: #ff3f34;
-            text-decoration: none;
-            font-size: 1.5rem;
-            margin: 0 20px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            text-align: center;
-            padding: 50px;
-        }
-        footer {
-            background-color: #000;
-            color: #ccc;
-            text-align: center;
-            padding: 15px;
-            font-size: 1rem;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Welcome to My Zone</h1>
-</header>
-
-<nav>
-    <a href="index.html">Home</a>
-    <a href="contact.html">Contact</a>
-</nav>
-
-<main>
-    <h2>Home Page</h2>
-    <p>Welcome to the home page of Mirza Daiyan's website.</p>
-</main>
-
-<footer>
-    &copy; 2024 Mirza Daiyan | All Rights Reserved
-</footer>
-
 </body>
 </html>
