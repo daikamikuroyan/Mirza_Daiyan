@@ -3,163 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming UI Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Welcome to My Zone</title>
     <style>
         /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Body Styling */
         body {
-            background-color: #0b0e13;
+            background: #1e1e2e; /* Riot-style dark background */
             color: #fff;
+            overflow-x: hidden;
         }
 
         /* Header Section */
         header {
-            background: linear-gradient(to right, #111827, #1e293b);
-            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #2a2a40, #3b3b58);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         header .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #00d9ff;
+            color: #f02d3a;
             text-transform: uppercase;
             letter-spacing: 2px;
+            cursor: pointer;
         }
 
-        header nav ul {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 25px;
         }
 
-        header nav ul li a {
+        nav ul li a {
             text-decoration: none;
-            color: #fff;
+            color: #eaeaea;
+            font-weight: 500;
             transition: color 0.3s;
-            font-size: 1rem;
         }
 
-        header nav ul li a:hover {
-            color: #00d9ff;
+        nav ul li a:hover {
+            color: #f02d3a;
         }
 
         /* Hero Section */
         .hero {
-            height: 80vh;
-            background: url('https://source.unsplash.com/1600x900/?gaming') no-repeat center center/cover;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
+            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; 
             position: relative;
+            z-index: 1;
         }
 
-        .hero::after {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+            background: rgba(30, 30, 46, 0.7);
+            z-index: -1;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            z-index: 2;
-            color: #fff;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            z-index: 2;
-            color: #ccc;
-        }
-
-        .hero .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background-color: #00d9ff;
-            color: #111827;
+            font-size: 3.5rem;
             font-weight: bold;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            z-index: 2;
-            transition: background-color 0.3s;
+            color: #fff;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
         }
 
-        .hero .cta-button:hover {
-            background-color: #00a3cc;
+        .hero h2 {
+            font-size: 1.8rem;
+            margin: 10px 0 30px;
+            color: #f02d3a;
+            text-transform: uppercase;
         }
 
-        /* Games Section */
-        .games {
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .hero button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background: #f02d3a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(240, 45, 58, 0.5);
         }
 
-        .game-card {
-            background-color: #1e293b;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s;
-        }
-
-        .game-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .game-card h3 {
-            padding: 1rem;
-            font-size: 1.5rem;
-            color: #00d9ff;
-        }
-
-        .game-card p {
-            padding: 0 1rem 1rem 1rem;
-            color: #ccc;
-            font-size: 1rem;
-        }
-
-        .game-card:hover {
+        .hero button:hover {
             transform: scale(1.05);
+            background: #e62130;
+            box-shadow: 0 6px 15px rgba(240, 45, 58, 0.7);
         }
 
         /* Second Section */
         .second-section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #000, #1c1c1c);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #12121b;
+            color: #f02d3a;
+            text-transform: uppercase;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 4px 10px rgba(240, 45, 58, 0.7);
             opacity: 0;
-            transform: translateY(100%);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .second-section.show {
@@ -167,42 +140,41 @@
             transform: translateY(0);
         }
 
-        .big-text {
-            font-size: 3rem;
-            color: #f1c40f;
-            text-shadow: 0 2px 15px rgba(241, 196, 15, 0.8);
-            animation: pulse 2s infinite;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         /* Footer */
         footer {
-            background: #111827;
-            color: #ccc;
+            background: #2a2a40;
+            padding: 20px;
             text-align: center;
-            padding: 1rem;
+            color: #ccc;
+            font-size: 0.9rem;
         }
 
-        footer a {
-            color: #00d9ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
             }
-            50% {
-                transform: scale(1.05);
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            100% {
-                transform: scale(1);
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .hero button {
+                font-size: 1rem;
+            }
+
+            .second-section {
+                font-size: 2rem;
             }
         }
     </style>
@@ -210,13 +182,12 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">GamerZone</div>
+        <div class="logo">Daiyan Zone</div>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Games</a></li>
-                <li><a href="#">Tournaments</a></li>
                 <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
@@ -224,34 +195,31 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to GamerZone</h1>
-        <p>Your ultimate gaming hub for tournaments, news, and more!</p>
-        <a href="#games" class="cta-button">Explore Games</a>
+        <h1>Welcome to My Zone</h1>
+        <h2>Here Me, Daiyan</h2>
+        <button onclick="showSecondSection()">Explore More</button>
     </section>
 
     <!-- Second Section -->
-    <div class="second-section" id="second-section">
-        <h1 class="big-text">I'm Still Learning</h1>
-    </div>
+    <section class="second-section" id="second-section">
+        I'm Still Learning
+    </section>
 
-    <!-- Games Section -->
-    <section id="games" class="games">
-        <div class="game-card">
-            <img src="https://source.unsplash.com/400x200/?fps-game" alt="Game 1">
-            <h3>First Person Shooter</h3>
-            <p>Experience fast-paced action and precision shooting in the latest FPS games.</p>
-        </div>
-        <div class="game-card">
-            <img src="https://source.unsplash.com/400x200/?rpg-game" alt="Game 2">
-            <h3>Role Playing Games</h3>
-            <p>Immerse yourself in rich stories and epic adventures.</p>
-        </div>
-        <div class="game-card">
-            <img src="https://source.unsplash.com/400x200/?strategy-game" alt="Game 3">
-            <h3>Strategy Games</h3>
-            <p>Plan, build, and conquer your way to victory.</p>
-        </div>
-        <div class="game-card">
-            <img src="https://source.unsplash.com/400x200/?racing-game" alt="Game 4">
-            <h3>Racing Games</h3>
-            <p>Feel the thrill of high-speed racing like
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Daiyan Zone | Designed with Passion
+    </footer>
+
+    <script>
+        function showSecondSection() {
+            // Scroll to the second section smoothly
+            const secondSection = document.getElementById('second-section');
+            secondSection.classList.add('show');
+            window.scrollTo({
+                top: secondSection.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
