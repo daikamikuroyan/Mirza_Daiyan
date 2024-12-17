@@ -15,7 +15,7 @@
 
         /* Body Styling */
         body {
-            background: #1e1e2e; /* Riot-style dark background */
+            background: #1e1e2e;
             color: #fff;
             overflow-x: hidden;
         }
@@ -60,6 +60,14 @@
             color: #f02d3a;
         }
 
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
         /* Login & Signup */
         .auth {
             display: flex;
@@ -90,7 +98,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; 
+            background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat;
             position: relative;
             z-index: 1;
         }
@@ -139,28 +147,6 @@
             box-shadow: 0 6px 15px rgba(240, 45, 58, 0.7);
         }
 
-        /* Second Section */
-        .second-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #12121b;
-            color: #f02d3a;
-            text-transform: uppercase;
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 0 4px 10px rgba(240, 45, 58, 0.7);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .second-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Footer */
         footer {
             background: #2a2a40;
@@ -170,59 +156,24 @@
             font-size: 0.9rem;
         }
 
-        /* Popup Form */
-        .popup-form {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1e1e2e;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-        .popup-form h2 {
-            color: #ff3f34;
-            margin-bottom: 20px;
-        }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
 
-        .popup-form input {
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background: #2a2a40;
-            color: #eaeaea;
-        }
+            .hero button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
 
-        .popup-form button {
-            width: 100%;
-            background-color: #ff3f34;
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .popup-form button:hover {
-            background-color: #e62130;
-        }
-
-        .popup-form .close-btn {
-            background: none;
-            color: white;
-            font-size: 1rem;
-            text-align: right;
-            cursor: pointer;
-            margin-bottom: 10px;
+            footer {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -232,10 +183,8 @@
         <div class="logo">Get High</div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <div class="auth">
@@ -248,77 +197,12 @@
     <section class="hero">
         <h1>Welcome to My Zone</h1>
         <h2>Here Me, Daiyan</h2>
-        <button onclick="showSecondSection()">Explore More</button>
-    </section>
-
-    <!-- Second Section -->
-    <section class="second-section" id="second-section">
-        I'm Still Learning
+        <button onclick="alert('Coming Soon!')">Explore More</button>
     </section>
 
     <!-- Footer -->
     <footer>
         &copy; 2024 Daiyan Zone | Designed with Passion
     </footer>
-
-    <!-- Login/Signup Form -->
-    <div class="popup-form" id="popup-form">
-        <button class="close-btn" onclick="closeForm()">X Close</button>
-        <h2 id="form-title">Login</h2>
-        <form id="auth-form" onsubmit="saveUserData(event)">
-            <input type="text" id="username" placeholder="Enter your name" required />
-            <input type="email" id="email" placeholder="Enter your email" required />
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Show form dynamically for Login or Signup
-        function showForm(action) {
-            document.getElementById('popup-form').style.display = 'block';
-            document.getElementById('form-title').textContent = action === 'login' ? 'Login' : 'Sign Up';
-        }
-
-        // Close the form
-        function closeForm() {
-            document.getElementById('popup-form').style.display = 'none';
-        }
-
-        // Save user data in localStorage
-        function saveUserData(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-
-            localStorage.setItem('username', username);
-            localStorage.setItem('email', email);
-
-            alert(`Welcome, ${username}!`);
-            closeForm();
-            checkUserLogin();
-        }
-
-        // Check if user is already logged in
-        function checkUserLogin() {
-            const username = localStorage.getItem('username');
-            if (username) {
-                document.querySelector('.hero h1').textContent = `Welcome Back, ${username}!`;
-                document.querySelector('.auth').innerHTML = `<span style="color:#f02d3a; font-weight:bold;">Logged in as ${username}</span>`;
-            }
-        }
-
-        // On page load, check for logged-in user
-        window.onload = checkUserLogin;
-
-        function showSecondSection() {
-            const secondSection = document.getElementById('second-section');
-            secondSection.classList.add('show');
-            window.scrollTo({
-                top: secondSection.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    </script>
 </body>
 </html>
