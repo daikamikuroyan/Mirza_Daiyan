@@ -367,3 +367,39 @@
         &copy; 2024 Mirza Daiyan | All Rights Reserved
     </footer>
 </div>
+<!-- Add this JavaScript below your existing script in the home page -->
+<script>
+    // Show the contact popup
+    function showContactPopup() {
+        document.getElementById('popup-contact').style.display = 'block';
+    }
+
+    // Close the contact popup
+    function closeContactPopup() {
+        document.getElementById('popup-contact').style.display = 'none';
+    }
+
+    // Add event listener to close when clicking outside the modal
+    window.onclick = function(event) {
+        const modal = document.getElementById('popup-contact');
+        if (event.target === modal) {
+            closeContactPopup();
+        }
+    }
+</script>
+<!-- Modify the existing header in the home page to include a contact button -->
+<header>
+    <div class="logo">Get High</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="javascript:void(0);" onclick="showContactPopup()">Contact</a></li> <!-- Contact Button -->
+        </ul>
+    </nav>
+    <div class="auth">
+        <button onclick="showForm('login')">Login</button>
+        <button onclick="showForm('signup')">Sign Up</button>
+    </div>
+</header>
