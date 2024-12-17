@@ -3,49 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamerZone</title>
+    <title>Welcome to My Zone</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #0a0a0a; color: #fff; font-size: 16px; }
-        header { background: linear-gradient(90deg, #1b1b1b, #292929); display: flex; justify-content: space-between; padding: 20px 5%; position: fixed; top: 0; width: 100%; z-index: 1000; }
-        .logo { font-size: 2rem; color: #ff5733; font-weight: bold; text-transform: uppercase; animation: glow 2s infinite alternate; }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav ul li a { text-decoration: none; color: #ff9f7f; font-weight: 500; transition: transform 0.3s ease; animation: slideIn 1.5s ease forwards; }
-        nav ul li a:hover { color: #ff5733; transform: scale(1.1); }
-        @keyframes glow { 0% { text-shadow: 0 0 5px #ff5733; } 100% { text-shadow: 0 0 20px #ff5733; } }
-        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
 
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://wallpaperaccess.com/full/4702268.jpg') center/cover no-repeat; position: relative; z-index: 1; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.8); z-index: -1; }
-        .hero h1 { font-size: 4rem; color: #ff5733; animation: pulseGlow 2s infinite alternate; }
-        .hero h2 { font-size: 2rem; margin: 10px 0; color: #ff9f7f; animation: fadeIn 3s ease-in-out; }
-        @keyframes pulseGlow { 0% { text-shadow: 0 0 5px #ff5733; } 100% { text-shadow: 0 0 10px #ff5733; } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .hero button { padding: 12px 25px; font-size: 1.2rem; color: #fff; background: #ff5733; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
-        .hero button:hover { transform: scale(1.1); background: #e6493e; }
+        /* Body Styling */
+        body {
+            background: #121212; /* Dark Gaming-Like Background */
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            transition: background 1s ease-in-out;
+        }
 
-        footer { background: #292929; padding: 20px; text-align: center; color: #bbb; font-size: 0.9rem; }
+        /* Container Styling */
+        .container {
+            animation: fadeIn 2s ease-in-out;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1); /* Frosted Glass Effect */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Titles */
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #f1c40f; /* Yellow Accent */
+            text-shadow: 0 2px 8px rgba(255, 255, 0, 0.8);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+
+        /* Creative Button */
+        .creative-button {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #121212;
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        .creative-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6);
+        }
+
+        /* Second Section */
+        .second-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #000, #1c1c1c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .second-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .big-text {
+            font-size: 4rem;
+            color: #f1c40f;
+            text-shadow: 0 2px 15px rgba(241, 196, 15, 0.8);
+            animation: pulse 2s infinite;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
     </style>
 </head>
 <body>
+    <!-- Main Page -->
+    <div class="container" id="main-page">
+        <h1 class="main-title">Welcome to My Zone</h1>
+        <h2 class="subtitle">Here Me, Daiyan</h2>
+        <button class="creative-button" onclick="showSecondSection()">Explore More</button>
+    </div>
 
-    <header>
-        <div class="logo">GamerZone</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Second Section -->
+    <div class="second-section" id="second-section">
+        <h1 class="big-text">I'm Still Learning</h1>
+    </div>
 
-    <section class="hero">
-        <h1>Welcome to GamerZone</h1>
-        <h2>Your ultimate gaming experience</h2>
-    </section>
+    <script>
+        function showSecondSection() {
+            // Hide the main page smoothly
+            document.getElementById('main-page').style.display = 'none';
 
-    <footer>
-        &copy; 2024 GamerZone | Powered by Passion
-    </footer>
-
+            // Show the second section
+            const secondSection = document.getElementById('second-section');
+            secondSection.classList.add('show');
+        }
+    </script>
 </body>
 </html>
