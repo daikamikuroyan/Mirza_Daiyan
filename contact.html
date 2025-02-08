@@ -1,1 +1,134 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drags Nalifier</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0b0c1e, #2a2b3d);
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #ff4654;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 200px);
+    }
+    form {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    form h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ff4654;
+    }
+    input[type="email"] {
+      width: calc(100% - 20px);
+      padding: 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #ff4654;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #e03e49;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    footer p {
+      margin: 0;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Drags Nalifier</h1>
+    <p>Your Ultimate Gaming Companion</p>
+  </header>
+  <div class="container">
+    <form id="emailForm">
+      <h2>Join Our Community</h2>
+      <input type="email" id="emailInput" placeholder="Enter your Gmail address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2023 Drags Nalifier. All rights reserved.</p>
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init('5upM0POVqa69LPubp');
+    })();
+
+    document.getElementById('emailForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const email = document.getElementById('emailInput').value;
+
+      const templateParams = {
+        to_email: email,
+        message: `Hello,\n\nThank you for joining the Drags nalifier community! We're excited to have you.\nStay tuned for updates and more exciting things coming soon.\n\nBest regards,\nThe Drags nalifier Team`
+      };
+
+      emailjs.send('service_77m8nup', 'template_default', templateParams)
+        .then(function (response) {
+          alert('Thank you! A greeting email has been sent to your inbox.');
+          document.getElementById('emailForm').reset();
+        }, function (error) {
+          console.error('Error sending email:', error);
+          alert('Oops! Something went wrong. Please try again later.');
+        });
+    });
+  </script>
+</body>
+</html>
+```
