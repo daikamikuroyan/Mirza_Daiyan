@@ -1,159 +1,95 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Information</title>
+    <title>Drags Nalifier</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #121212;
-            font-family: 'Arial', sans-serif;
-            color: white;
-        }
-        header {
-            background-color: #000000;
-            padding: 30px;
-            text-align: center;
-        }
-        header h1 {
-            color: #ff3f34;
-            font-size: 3rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        .container {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        h2 {
-            color: #ff3f34;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #ccc;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-        .contact-info {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            align-items: center;
+            height: 100vh;
         }
-        .contact-item {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 12px;
-            width: 200px;
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .contact-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+        h1 {
+            color: #333;
         }
-        .contact-item img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        .contact-item img:hover {
-            transform: rotate(360deg);
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
         }
-        .contact-item p {
-            color: #ff9f7f;
-            font-size: 1.2rem;
+        button:hover {
+            background-color: #0056b3;
         }
-        footer {
-            background-color: #000000;
-            color: #ccc;
-            text-align: center;
-            padding: 15px;
-            font-size: 1rem;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Media Queries for Responsiveness */
-        @media screen and (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .container h2 {
-                font-size: 2rem;
-            }
-
-            .contact-item {
-                width: 180px;
-                padding: 20px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .container h2 {
-                font-size: 1.8rem;
-            }
-
-            .contact-info {
-                gap: 20px;
-            }
-
-            .contact-item {
-                width: 160px;
-                padding: 15px;
-            }
+        .message {
+            margin-top: 20px;
+            font-size: 14px;
+            color: green;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Contact Information</h1>
-    </header>
-
-    <!-- Container -->
     <div class="container">
-        <h2>Reach out to Me</h2>
-        <p>I'm always open to discuss exciting opportunities!</p>
-<div class="contact-info">
-    <!-- WhatsApp -->
-    <a href="tel:+8801869004946" class="contact-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Logo">
-        <p>+8801869004946</p>
-        <p>WhatsApp</p>
-    </a>
+        <h1>Welcome to Drags Nalifier</h1>
+        <p>Please enter your Gmail address to receive a greeting message:</p>
+        <input type="email" id="emailInput" placeholder="Enter your Gmail address" required>
+        <button onclick="sendEmail()">Submit</button>
+        <div class="message" id="message"></div>
+    </div>
 
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/people/Mirza-Daiyan/pfbid0YGUYpNE8zYPWtPGJ5c12LcY32BfAcs94peti4N3mzfx1pKorxyWQmnMzuo1U5w21l/" target="_blank" class="contact-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
-        <p>Mirza Daiyan</p>
-        <p>Facebook</p>
-    </a>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("5upM0POVqa69LPubp");
+        })();
 
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/ee.dax11/" target="_blank" class="contact-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
-        <p>@ee.dax11</p>
-        <p>Instagram</p>
-    </a>
+        function sendEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (!email) {
+                alert('Please enter a valid Gmail address.');
+                return;
+            }
 
-    <!-- Phone -->
-    <a href="tel:+8801869004946" class="contact-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Phone_icon.svg" alt="Phone Logo">
-        <p>+8801869004946</p>
-        <p>Phone</p>
-    </a>
-</div>
+            const templateParams = {
+                to_email: email,
+                from_name: "Drag-Mir",
+                message: "Thank you for using Drags Nalifier! We appreciate your visit and hope you have a great experience."
+            };
 
-        
+            emailjs.send('service_77m8nup', 'template_default', templateParams)
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    document.getElementById('message').innerText = 'A greeting email has been sent to your Gmail address!';
+                }, function(error) {
+                    console.error('Error sending email:', error);
+                    document.getElementById('message').innerText = 'There was an error sending the email. Please try again later.';
+                });
+        }
+    </script>
+</body>
+</html>
+```
